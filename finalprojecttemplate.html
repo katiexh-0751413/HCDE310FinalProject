@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Makeup Shades</title>
+    <style>
+		body{font-family:Helvetica,Arial,sans-serif;font-size:0.8em}
+		.section{
+			float:left;
+			text-align:left;
+			max-width:30em;
+			margin-bottom:5em;
+			margin-right:5em;
+			background:#f0ead6
+		}
+		.section td{vertical-align:top}
+	</style>
+</head>
+<body>
+    <h1>Makeup Shades</h1>
+	{% for section in column %}
+		<div class='section'>
+			<table>
+				<tr><th colspan='2'>{{section}}</th></tr>
+				{% for product in column[section] %}
+					<tr><td><img src='{{column[section][product]["image_link"]}}' alt=''></td></tr>
+                    <tr><td><img src='{{column[section][product]["color_link"]}}' alt='Antique Brass'></td></tr>
+                    <tr><td><strong>Name: {{column[section][product]['product_name']}}</strong></td></tr>
+					<tr><td>Shade: {{column[section][product]['color_name']}}</td></tr>
+					<tr><td>Hex Code: {{column[section][product]['hex_value']}}</td></tr>
+				{% endfor %}
+			</table>
+		</div>
+	{% endfor %}
+</body>
+</html>
